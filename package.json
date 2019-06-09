@@ -1,5 +1,5 @@
 {
-  "name": "test-js-wesobket-client",
+  "name": "svelte-app",
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c && npm run pack_gzip",
