@@ -1,5 +1,14 @@
 # svelte seed 
 
+with:
+- router (svelte-spa-router)
+- separate static folder for index and global css (will copy to build folder)
+- build : generate gzip files in a separate folder
+- rootImport (i.e. import from "/some/file")
+- svelte-preprocess (can separate template code and css files)
+- typescript
+
+
 
 
 *Psst — looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
