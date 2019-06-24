@@ -20,6 +20,9 @@ cd my-svelte-app
  ```
   - development priority: .env.development.local -> env.development -> .env
   - production priority: .env.production.local -> env.production -> .env
+  - **NOTE : the .env file WILL be included in the git repository, this is not a server side app after all.**  
+              so any data exposed in the code will be available to the end-client !  
+              the purpose here is to allow for development/production variance.
 
 ## Get started
 

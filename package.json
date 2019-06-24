@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "dotenv": "^8.0.0",
+    "glob": "^7.1.4",
     "gzipper": "^2.8.0",
     "npm-run-all": "^4.1.5",
     "rimraf": "^2.6.3",

@@ -7,25 +7,18 @@ import autoPreprocess from 'svelte-preprocess'
 import typescript from 'rollup-plugin-typescript';
 import rootImport from 'rollup-plugin-root-import';
 import copy from 'rollup-plugin-copy-glob';
-import dotenv from 'rollup-plugin-dotenv';
+//import rollupDotenv from 'rollup-plugin-dotenv';
+import dotenvPlugin_FIX from './.build-tools/rollup-plugin-dotenv-fix'
 import replace from 'rollup-plugin-replace';
 
 const outputDir = "build";
 const production = !process.env.ROLLUP_WATCH;
 
-// this will determine the .env files to used
-// priority (dev): .env.development.local -> .env.development -> .env
-// priority (build): .env.production.local -> .env.production -> .env
-// the content of the .env files will be available in the js code:
-// i.e : 
-// -- .env file content: 
-// MY_VAR = hello
-// -- in the js :
-// console.log(process.env.MY_VAR)
+// this will determine the .env files to used. see README.md
 process.env.NODE_ENV = production ? "production" : "development";
 
+//root imports
 let rootImportOptions = {
-	// Will first look in `client/src/*` and then `common/src/*`.
 	root: `${__dirname}/src`,
 	useEntry: 'prepend',
 };
@@ -47,7 +40,7 @@ export default {
 			{ verbose: true, watch: !production }
 		),
 		replace({ 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV) }),
-		dotenv(),
+		dotenvPlugin_FIX(),
 		svelte({
 			preprocess: autoPreprocess({ /* options */ }),
 			// enable run-time checks when not in production
