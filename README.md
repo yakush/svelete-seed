@@ -1,33 +1,25 @@
-# svelte seed 
+# my svelte seed 
 
-with:
-- router (svelte-spa-router)
-- separate static folder for index and global css (will copy to build folder)
+This is my project template for [Svelte]  
+get it using
+
+```bash
+npx degit https://github.com/yakush/svelete-seed my-svelte-app
+cd my-svelte-app
+```
+## features:
+- router (svelte-router)
+- separate static folder for index and global css (will be copied to build folder)
 - build : generate gzip files in a separate folder
 - rootImport (i.e. import from "/some/file")
 - svelte-preprocess (can separate template code and css files)
 - typescript
-
-
-
-
-*Psst — looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
-
----
-
-# svelte app
-
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
-
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
-
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
-
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
-
+- .env support : content of the .env file will be available in the js world using:
+ ```js
+ process.env.your-var-name
+ ```
+  - development priority: .env.development.local -> env.development -> .env
+  - production priority: .env.production.local -> env.production -> .env
 
 ## Get started
 

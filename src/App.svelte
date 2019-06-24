@@ -1,16 +1,10 @@
 <script>
-  import Router from "svelte-spa-router";
-  import {
-    link,
-    push,
-    pop,
-    replace,
-    location,
-    querystring
-  } from "svelte-spa-router";
-  import active from "svelte-spa-router/active";
+  import { Router, Link, Route } from "svelte-routing";
 
-  import routes from "./routes";
+  import Routes from "./Routes.svelte";
+  import NavLink from "/comps/NavLink.svelte";
+
+  export let url = "";
 </script>
 
 <style>
@@ -18,33 +12,20 @@
   :global(a.active) {
     color: crimson;
   }
-  button {
-    padding: 2px;
-  }
 </style>
 
 <!-- -------------------------------------- -->
-<h1>My App</h1>
+<Router {url}>
 
-<!-- Show the current path -->
-<p>
-  Current path: {$location}
-  <br />
-  Querystring: {$querystring}
-</p>
+  <h1>My App</h1>
 
-<div>
-  <a href="/" use:link use:active>Home</a>
-  |
-  <a href="/does/not/exist" use:link>Not found</a>
-</div>
+  <nav>
+    <NavLink to="/">Home</NavLink>
+    <NavLink to="about">About</NavLink>
+    <NavLink to="blog">Blog</NavLink>
+  </nav>
 
-<!-- Navigate with buttons -->
-<p class="navigation-buttons">
-  <button on:click={() => pop()}>Go back</button>
-  <button on:click={() => push('/any/something')}>Visit something</button>
-  <button on:click={() => replace('/any/replaced')}>Replace page</button>
-</p>
+  <!-- router outlet: -->
+  <Routes />
 
-<!-- router outlet -->
-<Router {routes} />
+</Router>
